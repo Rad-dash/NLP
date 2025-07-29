@@ -1,0 +1,55 @@
+import re
+
+def extract_url(text):
+    return re.findall(r'https?://[^\s]+', text)
+
+sentence = "I love spending time at https://www.xy123z.com/"
+print(extract_url(sentence))
+def extract_email(text):
+    return re.findall(r'\b[\w.-]+@[\w.-]+\.\w{2,4}\b', text)
+
+sentence = "My email id is xyz111@gmail.com"
+print(extract_email(sentence))
+def extract_hashtags(text):
+    return re.findall(r'#\w+', text)
+
+sentence = "#Sushant is trending now in the world."
+print(extract_hashtags(sentence))
+
+def extract_mentions(text):
+    return re.findall(r'@\w+', text)
+
+sentence = "@Ajit, please help me"
+print(extract_mentions(sentence))
+def extract_numbers(text):
+    return re.findall(r'\b\d+\b', text)
+
+sentence = "8853147 sq. km of area washed away in floods"
+print(extract_numbers(sentence))
+def extract_punctuations(text):
+    return re.findall(r'[^\w\s]', text)
+
+sentence = "Corona virus killed #24506 people. #Corona is un(tolerable)"
+print(extract_punctuations(sentence))
+def validate_pan(pan):
+    return bool(re.fullmatch(r'[A-Z]{5}[0-9]{4}[A-Z]', pan))
+
+sentence = """a.	Example1: "ABCED3193P"
+b.	Example2: "lEcGD012eg"
+"""
+print(validate_pan(sentence))
+def clean_repeated_chars(text):
+    return re.sub(r'(.)\1{2,}', r'\1', text)
+
+sentence = "heyyy this is a verrrry loong texttt"
+print(clean_repeated_chars(sentence))
+def extract_mobile_numbers(text):
+    return re.findall(r'\b[6-9]\d{9}\b', text)
+
+sentence = "9990001796 is a phone number of PMO office"
+print(extract_mobile_numbers(sentence))
+def extract_capital_words(text):
+    return re.findall(r'\b[A-Z][a-z]*\b', text)
+
+sentence = "Ajit Doval is the best National Security Advisor so far."
+print(extract_capital_words(sentence))
